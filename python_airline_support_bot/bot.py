@@ -310,7 +310,8 @@ If a customer seems frustrated, acknowledge their concerns and offer specific so
                 bot_response = response_message.content
 
             # Add bot response to conversation history
-            self._add_to_conversation_history("assistant", bot_response)
+            if bot_response:
+                self._add_to_conversation_history("assistant", bot_response)
 
             return bot_response
 
