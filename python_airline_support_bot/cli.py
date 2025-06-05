@@ -5,14 +5,16 @@ Command-line interface for the Airline Support Bot
 import os
 
 import click
+from autoblocks.tracer import init_auto_tracer
+from autoblocks.tracer import trace_app
 from dotenv import load_dotenv
+from opentelemetry.instrumentation.openai import OpenAIInstrumentor
 
 from .bot import AirlineSupportBot
 
-
-def load_environment():
-    """Load environment variables from .env file"""
-    load_dotenv()
+load_dotenv()
+init_auto_tracer(api_key=os.getenv("AUTOBLOCKS_V2_API_KEY"), is_batch_disabled=True)
+OpenAIInstrumentor().instrument()
 
 
 @click.command()
@@ -22,7 +24,6 @@ def main(api_key, interactive):
     """
     Airline Support Bot - AI-powered customer service assistant for flight-related questions
     """
-    load_environment()
 
     # Check for API key
     if not api_key and not os.getenv("OPENAI_API_KEY"):
@@ -44,6 +45,7 @@ def main(api_key, interactive):
         click.echo("Non-interactive mode not yet implemented. Use --interactive flag.")
 
 
+@trace_app("airline-support-bot", "local-cli")
 def run_interactive_mode(bot: AirlineSupportBot):
     """Run the bot in interactive mode"""
     click.echo("\n" + "=" * 60)
@@ -115,7 +117,6 @@ def cli():
 @cli.command()
 def demo():
     """Run a quick demo of the bot"""
-    load_environment()
 
     if not os.getenv("OPENAI_API_KEY"):
         click.echo("❌ Error: OPENAI_API_KEY environment variable is required for demo!")

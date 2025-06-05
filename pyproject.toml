@@ -27,6 +27,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 airline-bot = "python_airline_support_bot.cli:main"
+run_tests = "tests.test_bot:run_tests"
 
 [tool.black]
 line-length = 120

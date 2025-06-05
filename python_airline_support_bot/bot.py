@@ -4,6 +4,8 @@ Airline Support Bot - Main bot implementation using OpenAI
 
 import json
 import os
+import uuid
+from datetime import datetime
 from typing import Any
 from typing import Dict
 from typing import List
@@ -229,6 +231,22 @@ If a customer seems frustrated, acknowledge their concerns and offer specific so
         except Exception as e:
             return f"Error executing {function_name}: {str(e)}"
 
+    def _add_to_conversation_history(self, role: str, content: str) -> None:
+        """
+        Add a message to the conversation history with proper formatting
+
+        Args:
+            role: The role of the message sender ("user" or "assistant")
+            content: The message content
+        """
+        entry = {
+            "id": str(uuid.uuid4()),
+            "timestamp": datetime.now().replace(microsecond=0).isoformat() + "Z",
+            "role": role,
+            "content": content,
+        }
+        self.conversation_history.append(entry)
+
     def process_message(self, user_message: str) -> str:
         """
         Process a user message and return a response
@@ -240,7 +258,7 @@ If a customer seems frustrated, acknowledge their concerns and offer specific so
             Bot's response
         """
         # Add the user message to conversation history
-        self.conversation_history.append({"role": "user", "content": user_message})
+        self._add_to_conversation_history("user", user_message)
 
         # Prepare messages for OpenAI
         messages = [{"role": "system", "content": self.system_prompt}]
@@ -292,7 +310,7 @@ If a customer seems frustrated, acknowledge their concerns and offer specific so
                 bot_response = response_message.content
 
             # Add bot response to conversation history
-            self.conversation_history.append({"role": "assistant", "content": bot_response})
+            self._add_to_conversation_history("assistant", bot_response)
 
             return bot_response
 
