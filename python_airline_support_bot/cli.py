@@ -81,6 +81,8 @@ def run_interactive_mode(bot: AirlineSupportBot):
         except Exception as e:
             click.echo(f"\n❌ Error: {e}\n")
 
+    return dict(messages=bot.conversation_history)
+
 
 def show_help(bot: AirlineSupportBot):
     """Show help information and sample flight numbers"""
