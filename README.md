@@ -139,12 +139,11 @@ print(response)
 flights = bot.get_available_flights()
 for flight in flights:
     print(f"{flight.flight_number}: {flight.status}")
-```
 
-### Run Example Script
-
-```bash
-poetry run python example_usage.py
+# Search for flights by route
+ny_to_la_flights = bot.search_flights_by_route("New York", "Los Angeles")
+for flight in ny_to_la_flights:
+    print(f"Found: {flight.flight_number} - {flight.departure_time}")
 ```
 
 ## Sample Flight Data 📊
