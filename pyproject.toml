@@ -11,8 +11,11 @@ openai = "^1.76.0"
 python-dotenv = "^1.0.0"
 pydantic = "^2.0.0"
 click = "^8.0.0"
+opentelemetry-instrumentation-openai = "^0.40.7"
+autoblocksai = "^0.0.124"
 
 [tool.poetry.group.dev.dependencies]
+pre-commit = "^4.0.0"
 pytest = "^7.0.0"
 black = "^23.0.0"
 isort = "^5.0.0"
@@ -24,3 +27,14 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 airline-bot = "python_airline_support_bot.cli:main"
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+lint.select = ["E", "F", "I001"]
+line-length = 120
+
+[tool.ruff.lint.isort]
+force-single-line = true
+known-first-party = ["python_airline_support_bot"]

@@ -1,3 +1,36 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://cdn.autoblocks.ai/images/logos/dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://cdn.autoblocks.ai/images/logos/light.png">
+    <img alt="Autoblocks Logo" width="300px" src="https://cdn.autoblocks.ai/images/logos/light.png">
+  </picture>
+</p>
+<p align="center">
+  📚
+  <a href="https://docs.autoblocks.ai/">Documentation</a>
+  &nbsp;
+  •
+  &nbsp;
+  🖥️
+  <a href="https://app-v2.autoblocks.ai/">Application</a>
+  &nbsp;
+  •
+  &nbsp;
+  🏠
+  <a href="https://www.autoblocks.ai/">Home</a>
+</p>
+
+# Development Setup
+
+* Install [`pyenv`](https://github.com/pyenv/pyenv)
+  * Install python 3.12: `pyenv install 3.12`
+* Install [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv)
+* Install [`poetry`](https://python-poetry.org/docs/#installation)
+* Create a virtualenv: `pyenv virtualenv 3.12 python-demo-app`
+  * Activate the virtualenv: `pyenv activate python-demo-app`
+* Install dependencies: `poetry install`
+* Install pre-commit: `poetry run pre-commit install`
+
 # Airline Support Bot 🛫
 
 An AI-powered airline customer support bot that can handle flight-related questions using OpenAI's GPT models with intelligent tool calling.
@@ -10,7 +43,7 @@ An AI-powered airline customer support bot that can handle flight-related questi
 - **Smart Function Selection**: AI automatically decides which tools to use based on customer questions
 - **Multi-topic Support**: Handles questions about:
   - Flight schedules and status
-  - Booking assistance  
+  - Booking assistance
   - Baggage policies
   - Check-in procedures
   - Cancellation and refund policies
@@ -57,7 +90,7 @@ The bot uses OpenAI's function calling feature to intelligently decide when to l
    ```bash
    export OPENAI_API_KEY="your_api_key_here"
    ```
-   
+
    Or create a `.env` file:
    ```bash
    echo "OPENAI_API_KEY=your_api_key_here" > .env
