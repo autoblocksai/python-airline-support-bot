@@ -26,8 +26,8 @@
   * Install python 3.12: `pyenv install 3.12`
 * Install [`pyenv-virtualenv`](https://github.com/pyenv/pyenv-virtualenv)
 * Install [`poetry`](https://python-poetry.org/docs/#installation)
-* Create a virtualenv: `pyenv virtualenv 3.12 python-demo-app`
-  * Activate the virtualenv: `pyenv activate python-demo-app`
+* Create a virtualenv: `pyenv virtualenv 3.12 python-airline-support-bot`
+  * Activate the virtualenv: `pyenv activate python-airline-support-bot`
 * Install dependencies: `poetry install`
 * Install pre-commit: `poetry run pre-commit install`
 
