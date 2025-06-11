@@ -224,27 +224,6 @@ class FlightInfo(BaseModel):
     terminal: Optional[str] = None
 ```
 
-## Development 🛠️
-
-### Running Tests
-
-```bash
-poetry run pytest
-```
-
-### Code Formatting
-
-```bash
-poetry run black python_airline_support_bot/
-poetry run isort python_airline_support_bot/
-```
-
-### Linting
-
-```bash
-poetry run flake8 python_airline_support_bot/
-```
-
 ## Configuration ⚙️
 
 ### Environment Variables
@@ -261,33 +240,3 @@ You can extend the bot by:
 2. **Adding more flight data**: Modify the `_create_sample_flight_data()` method
 3. **Connecting to real APIs**: Replace the sample data with calls to airline APIs
 4. **Customizing responses**: Modify the system prompt in `_create_system_prompt()`
-
-## Tool Calling Benefits 🎯
-
-The new tool calling approach provides several advantages:
-
-- **🧠 Intelligent**: AI decides when to look up data vs. provide general information
-- **⚡ Efficient**: Only makes function calls when necessary
-- **🎯 Accurate**: Gets the most up-to-date flight information when needed
-- **💬 Natural**: Seamlessly integrates tool results into conversational responses
-- **🔧 Extensible**: Easy to add new tools and capabilities
-
-## Contributing 🤝
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Submit a pull request
-
-## License 📄
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support 💭
-
-For questions or issues, please open an issue on GitHub or contact the maintainer.
-
----
-
-Happy flying! ✈️
