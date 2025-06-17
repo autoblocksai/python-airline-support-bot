@@ -13,6 +13,11 @@ from dotenv import load_dotenv
 from opentelemetry.instrumentation.openai import OpenAIInstrumentor
 
 from python_airline_support_bot.bot import AirlineSupportBot
+from tests.evaluators import Accuracy
+from tests.evaluators import CommunicationClarity
+from tests.evaluators import Helpfulness
+from tests.evaluators import ProblemResolution
+from tests.evaluators import Professionalism
 
 load_dotenv()
 init_auto_tracer(api_key=os.getenv("AUTOBLOCKS_V2_API_KEY"), is_batch_disabled=True)
@@ -72,5 +77,5 @@ def run_tests():
         app_slug="airline-support-bot",
         test_cases=test_cases,
         fn=test_fn,
-        evaluators=[],
+        evaluators=[Helpfulness(), Accuracy(), Professionalism(), ProblemResolution(), CommunicationClarity()],
     )
